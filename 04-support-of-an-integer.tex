@@ -1,0 +1,112 @@
+\documentclass[10pt,a4paper,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{macros}
+
+\begin{document}
+\bibliographystyle{alpha}
+
+\noindent \textit{Algebraic Number Theory, Math 421}
+
+\noindent \textit{Instructor: Sreekar M. Shastry}
+
+\noindent \emph{Notes on the notion of support}
+
+\bigskip
+
+\begin{ap}
+Let $f\in \Z$. We want to regard $f$ as a function on \Spec{\Z} which assigns
+to a prime $p$, something\ldots
+\end{ap}
+
+\begin{defn}
+Let $R$ be a ring and $M$ be an $R$-module. We define the sheaf associated to
+$M$ on $\Spec{R}$, denoted by $\smash{\widetilde{M}}$ as follows. For each
+$\mathfrak{p} \subset R$, let $M_\mathfrak{p}$ be the localization of $M$ at
+$\mathfrak{p}$ (i.e.~localization of $R$ w.r.t. the multiplicative set
+$M-\mathfrak{p}$). For any open set $U\subset \Spec{R}$ we define the group
+$\smash{\widetilde{M}}(U)$ to be { \[\smash{\widetilde{M}}(U) := \{s : U
+\rightarrow \coprod_{\mathfrak{p}\in U} M_\mathfrak{p} : \forall \mathfrak{p}
+\in U \ \exists V \ni \mathfrak{p}, m\in M, f\in R\ \forall \mathfrak{q} \in V,
+f\notin \mathfrak{q}, s(\mathfrak{q}) = m/f \in M_\mathfrak{q}\}.\]} We make
+$\smash{\widetilde{M}}$ into a sheaf by means of the obvious restriction maps.
+
+In words, $\smash{\widetilde{M}}(U)$ is the set of functions $s : U \rightarrow
+\coprod_{\mathfrak{p}\in U} M_\mathfrak{p} $ such that for each
+$\mathfrak{p}\in U$, $s(\mathfrak{p})\in M_\mathfrak{p}$ and such that $s$ is
+locally given by a fraction $m/f$ with $m\in M$ and $f\in R$ nonvanishing in a
+neighborhood of $\mathfrak{p}$.
+\end{defn}
+
+\begin{ap}
+Thus in our setting, $f\in \Z = H^0(\Spec{\Z}, \mathscr{O})$, the \Z-module $M$
+in question is taken to be the \emph{quotient} $\Z/(f)$; note that we may
+define $f(p) := $ the image of $f$ in $M_{(p)}$ or even the image of $f$ in
+$\mathbb{F}_p$ but it turns out that this is not the notion we are looking for.
+
+We are looking for a notion of support of the ideal $M$:
+
+\[\text{supp}(M) := \{\mathfrak{p} \in \Spec{R} : M_\mathfrak{p} \neq 0\}.\]
+This is to remind one of the notion of the support of a function $f : X
+\rightarrow \R$, \[\text{supp}(f) := \{x \in X : f(x) \neq 0 \}^{-}.\]
+
+Now, $M_{(p)} = 0$ iff there is an $s\notin (p)$ such that $sM = 0$. There is
+such an $s$ iff $f|s$. Thus there is such an $s$ iff $p\ndiv s$ and $f|s$. Thus
+\[\{p \in \Spec{\Z} : M_{(p)} = 0\} = \{p \in \Spec{\Z} : p \ndiv f\}.\] This
+set is the complement of $\text{supp}(M)$ and therefore \[\text{supp}(M) = \{p
+: p|f\}.\]
+
+(If we used the definition of $f(p) := $ the image of $f$ in $\mathbb{F}_p$
+then the support of $f$ would be the set of primes which do \emph{not} divide
+$f$.)
+\end{ap}
+
+\begin{ap}
+Let us contrast with the case of $R = \C[z]$. Let $f\in \C[z]$ and $M :=
+\C[z]/(f)$. Then by the same reasoning as above we have \[\text{supp}(M) =
+\{(z-w) \in \Spec{\C[z]} : (z-w) | f\} = \{w \in \C : f(w) = 0\} =
+f^{-1}(0)\] (some of the equalities only indicate bijections, of course).
+
+Thus the support of the module $M := \C[z]/(f)$ is precisely the
+\emph{complement} [sic] of the support of the function $f : \C \rightarrow \C$.
+\end{ap}
+
+\begin{ap}
+Given $f\in \C[z]$ we of course may regard $f$ as a entire holomorphic function
+$f: \C\rightarrow \C$. Thinking in terms of scheme theory, we may interpret
+this function as follows. Let $X := \Spec{\C[z]}$ be the affine line over \C{}.
+Then a closed point of $X$ corresponds to a maximal ideal $\mathfrak{m}_w :=
+(z-w)$ for some $w\in \C$ because \C{} is algebraically closed. The residue
+field of $X$ at $\mathfrak{m}_w$ is a copy of $\C$ which we shall denote
+$\C_w$. Thus we may consider the set theoretic function, \[ f_\# : X
+\rightarrow \coprod_{w\in \C} \C_w \] which sends $\mathfrak{m}_w$ to $f
+\imod{\mathfrak{m}_w}$. This function is defined only on closed points. This
+function is nonzero precisely on the set of maximal ideals which correspond to
+those $w$ such that $f(w) \neq 0$. Thus the naive notion of support of the
+function $f_\#$ coincides with the notion of support from analysis.
+\end{ap}
+
+\begin{ap}
+Let $n \in \Z = H^0(\Spec{\Z}, \mathscr{O}) $. Proceeding as above we may
+contemplate \[ n_\# : \Spec{\Z} \rightarrow \coprod_{p} \mathbb{F}_p \] which
+sends the ideal $(p)$ to the residue class of $n\imod{p}$ in $\mathbb{F}_p$.
+Then the set theoretic support of $n_\#$ is precisely the set of primes which
+do \emph{not} divide $n$.
+\end{ap}
+
+\begin{ap}
+Thus we see that it is possible to generalize the notion of support of a
+function $f$ as found in analysis, but this is precisely the complement of the
+notion of support as is used in commutative algebra and algebraic geometry,
+where one is interested in the support of the sheaf of modules $R/(f)$ where
+$f$ is in the ring of functions $R$ on a geometric object.
+
+Try not to get confused\ldots
+\end{ap}
+
+\bigskip
+
+\noindent References: Hartshorne, Atiyah-MacDonald, Eisenbud.
+
+\end{document}

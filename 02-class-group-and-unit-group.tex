@@ -1,0 +1,470 @@
+\documentclass[10pt,a4paper,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{macros}
+
+\begin{document}
+\bibliographystyle{alpha}
+
+\noindent \textit{Algebraic Number Theory, Math 421}
+
+\noindent \textit{Instructor: Sreekar M. Shastry}
+
+\noindent \textit{Notes on the ideal class group and the unit group}
+
+\section{Finiteness of the Class Group}
+
+We use the usual notation, $K, L/K, G, \OK, \OL, P, Q, \dots$
+
+\begin{thm}
+Given $K$, there is a positive real number $\lambda$, depending only on $K$
+such that every nonzero ideal $I\subset \OK$ contains a nonzero element
+$\alpha$ with \[|\Nm_{K/\Q}(\alpha)| \le \lambda \norm{I}.\]
+\end{thm}
+\begin{proof}
+Let \(\{\alpha_i\}_{i=1}^n\) be an integral basis for \OK{} and
+$\{\sigma_j\}_{j=1}^n$ be the set of embeddings $K\hookrightarrow \C$. We will
+show that \[\lambda := \prod_{i=1}^n \sum_{j=1}^n |\sigma_i(\alpha_j)|\] will
+do the job.
+
+For an ideal $I$, let $m$ be the unique positive integer such that \[m^n \le
+\norm{I} < (m+1)^n\] and consider the $(m+1)^n$ elements of \OK:
+\[\left\{\sum_{j=1}^n m_j\alpha_j : m_j \in \Z, 0 \le m_j \le m \right\}\] (we
+are secretly using the fact that $\mathrm{char}(K)=0$). Two elements of this
+set must be congruent mod $I$ since the set has cardinality greater than
+\norm{I}; we take their difference and obtain a nonzero element of $I$ of the
+form \[\alpha = \sum_{j=1}^n m_j\alpha_j \text{ s.t. } m_j\in\Z, |m_j| \le m.\]
+The following chain of inequalities completes the proof: \[|\Nm_{K/\Q}(\alpha)|
+= \prod_{i=1}^n |\sigma_i(\alpha)| \le \prod_{i=1}^n \sum_{j=1}^n
+m_j|\sigma_i(\alpha_j)| \le m^n\lambda \le \norm{I}\lambda.\]
+\end{proof}
+
+\begin{cor}
+Every ideal class of \OK{} contains an ideal $J$ with $\norm{J} \le \lambda$
+(the same $\lambda$ as above).
+\end{cor}
+\begin{proof}
+Given an ideal class $C$, fix a representative $I$ of $C^{-1}$ and choose
+$\alpha\in I$ as in the theorem. We have $I\supset (\alpha)$ so that $(\alpha)
+= IJ$ for some $J$ (by \cite[Theorem 15,p.57]{M} and its proof). Then $J$ is in
+the class of $C$. Now we use the theorem to the effect that \[\norm{(\alpha)} =
+|\Nm_{K/\Q}(\alpha)|\] to see that \[| \Nm_{K/\Q}(\alpha) | = \norm{(\alpha)} =
+\norm{I}\norm{J} \le \lambda\norm{I}. \]
+\end{proof}
+
+\begin{cor} The class group, $\Cl{\OK}$, is finite.
+\end{cor}
+\begin{proof}
+If $J = \prod P_i^{n_i}$ then $\norm{J} = \prod \norm{P_i}^{n_i}.$ Thus only
+finitely many \emph{ideals} can satisfy $\norm{J} \le \lambda$ since this
+inequality implies the same inequality for every $P | J$ and thus places bounds
+on the powers to which they can occur.
+\end{proof}
+
+\begin{eg}
+Let us use the above to show that $\Z[\sqrt{2}]$ is a PID or in other words
+that $\Cl{\Z[\sqrt{2}]}= \{1\}$.
+
+The integral basis is $\{1,\sqrt{2}\}$ (since $2 \equiv 2 \imod{4}$!) and the
+above proof produces $\lambda = (1+\sqrt{2})^2 = 1 + 2\sqrt{2} + 2$. This
+number is between 5 and 6 and therefore every ideal class contains an ideal $J$
+with $\norm{J} \le 6.$ Thus the support of $J$ must be contained in the set of
+primes lying over $2,3,5$. We factor each of $2.\OK, 3.\OK, 5.\OK:$ $2.\OK =
+\left( \sqrt{2} \right)^2$ while $3.\OK$ and $5.\OK$ are inert because $2$ is a
+quadratic nonresidue mod 3 and 5 (see \cite[Theorem 25,p.74]{M}). Therefore the
+only ideals $J$ with $\norm{J} \le 5$ are $\OK, \left( \sqrt{2} \right),$ and
+$2.\OK.$ It follows that every ideal in \OK{} is principle.
+\end{eg}
+
+\section{Minkowski's Theorem}
+
+\begin{ap}
+We now seek to improve the constant $\lambda$. We will accomplish this by
+embedding $\OK$ into $\R^n$ and applying general geometric results.
+
+Let $\{\sigma_1,\dots,\sigma_r\}$ be the embeddings $K\hookrightarrow \R$ and
+$\{\tau_1, \overline{\tau}_1,\dots,\tau_s,\overline{\tau}_s \}$ be the
+embeddings $K \hookrightarrow \C$ which do not factor through $\R \subset \C$.
+Thus $r+2s = n = [L:K].$ We obtain a map $\iota: K\rightarrow \R^n$ by \[\alpha
+\mapsto (\sigma_1(\alpha), \dots, \sigma_r(\alpha), \Re{\tau_1(\alpha)},
+\Im{\tau_1,(\alpha)}\dots, \Re{\tau_s(\alpha)}, \Im{\tau_s(\alpha)}).\] Observe
+that it is a homomorphism of abelian groups with trivial kernel.
+\end{ap}
+
+\begin{thm}
+The mapping $\iota : K \rightarrow \R^n$ sends \OK{} isomorphically (as abelian
+groups) onto a lattice in $\R^n$. A fundamental domain for this lattice has
+volume \[\frac{1}{2^s}\sqrt{|\disc{\OK}|}.\]
+\end{thm}
+\begin{proof}
+Let us see that $\iota(\OK)$ is a lattice $\Lambda$ in $\R^n$ (a lattice is by
+definition the \Z-span of an \R-basis for $\R^n$). To see this let
+$\{\alpha_i\}_{i=1}^n$ be an integral basis for \OK. These generate \OK{} over
+\Z{} and therefore their images in $\R^n$ generate $\Lambda$ over \Z. We must
+show that this generating set is linearly independent over \R{}. Consider the
+$n\times n$ matrix the $i$th row of which is $\iota(\alpha_i)$ (recall that $n
+= r+2s$):
+{\footnotesize
+\[ A := \begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_r(\alpha_1) & \Re{\tau_1(\alpha_1)} &
+\Im{\tau_1(\alpha_1)} & \cdots & \Re{\tau_s(\alpha_1)} & \Im{\tau_s(\alpha_1)}\\
+\vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\
+\sigma_1(\alpha_n) & \cdots & \sigma_r(\alpha_n) & \Re{\tau_1(\alpha_n)} &
+\Im{\tau_1(\alpha_n)}& \cdots & \Re{\tau_s(\alpha_n)} & \Im{\tau_s(\alpha_n)}
+\end{pmatrix}. \]} Elementary column operations transform this matrix
+into
+\[ B := \begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_r(\alpha_1) & {\overline{\tau}_1(\alpha_1)} &
+{\tau_1(\alpha_1)} & \cdots & {\overline{\tau}_s(\alpha_1)} & {\tau_s(\alpha_1)}\\
+\vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\
+\sigma_1(\alpha_n) & \cdots & \sigma_r(\alpha_n) & {\overline{\tau}_1(\alpha_n)} &
+{\tau_1(\alpha_n)}& \cdots & {\overline{\tau}_s(\alpha_n)} & {\tau_s(\alpha_n)}
+\end{pmatrix} \] so that we have
+\[\det(A) = \frac{1}{(2i)^s} \det(B).\]
+Now, $\det(B)$ is the discriminant of the number field $K$ (in particular it is
+nonzero by \cite[Theorem 7,p.25]{M}). On the other hand, the volume of the
+fundamental domain in question is $|\det(A)|$.
+\end{proof}
+
+\begin{ap}
+Let us define a fundamental domain for a lattice in Euclidean space with
+\Z-basis $\{v_1,\dots,v_n\}$ to be \[\left\{ \sum_{i=1}^n a_i v_i : a_i \in
+[0,1) \subset \R \right\}.\] From linear algebra, we know that the volume of
+the fundamental domain is the determinant of the matrix with rows $\{v_i\}$.
+This volume is moreover the volume (with respect to the Riemannian metric
+induced by pushforward from $\R^n$) of the compact torus $\R^n/\Lambda$.
+
+For a sublattice $\Lambda' \subset \Lambda$, the group $\Lambda/\Lambda'$ is
+finite and we have \[\vol(\R^n/\Lambda') =
+\vol(\R^n/\Lambda)|\Lambda/\Lambda'|.\] We apply this to an ideal $I \subset
+\OK$ to obtain \[\vol(\R^n/\Lambda_I) =
+\vol(\R^n/\Lambda_{\OK})|\Lambda_{\OK}/\Lambda_I| =
+\frac{1}{2^s}(|\disc{\OK}|)^{1/2}\norm{I}.\]
+
+We now define a ``norm'' on $\R^n$ for $x = (x_1,\dots,x_n)$ by \[\Nm(x) := x_1
+\cdots x_r \underbrace{(x_{r+1}^2+x_{r+2}^2)\cdots (x_{n-1}^2+x_n^2)}_{s\text{
+factors}}\] where $n = r + 2s$. Thus we have \[\Nm(\iota(x)) = \Nm_{K/\Q}(x)\]
+\end{ap}
+
+\begin{thm}\label{Minkowski}
+Every lattice $\Lambda \subset \R^n$ contains a nonzero point $x$ such that
+\[|\Nm(x)| \le \frac{n!}{n^n}\left( \frac{8}{\pi} \right)^s
+\vol(\R^n/\Lambda).\]
+\end{thm}
+
+\begin{cor}
+A nonzero ideal $I\subset \OK$ contains a nonzero element $\alpha$ such that
+\[|\Nm_{K/\Q}(\alpha)| \le \frac{n!}{n^n} \left( \frac{4}{\pi} \right)^s
+\norm{I} \sqrt{|\disc{\OK}|}.\]
+\end{cor}
+\begin{proof}
+Apply the above theorem with $\Lambda = \Lambda_I$, use the earlier result that
+\[\vol(\R^n/\Lambda_{\OK}) = 2^{-s}|\disc{\OK}|^{1/2},\] and the fact that
+$\vol(\R^n/\Lambda_{I}) = \norm{I}\vol(\R^n/\Lambda_{\OK})$.
+\end{proof}
+
+\begin{cor}
+Each ideal class of \OK{} has a representative $J$ with \[\norm{J} \le
+\frac{n!}{n^n} \left( \frac{4}{\pi} \right)^s \sqrt{|\disc{\OK}|}. \]
+\end{cor}
+\begin{proof}
+Given an ideal class $C$ choose an ideal $I\in C^{-1}$ and find an $\alpha$ as
+in the previous corollary. Now, there is a $J$ in $C$ such that $(\alpha) = IJ$
+so that the previous corollary gives \[|\Nm_{K/\Q}(\alpha)| = \norm{I} \norm{J}
+\le \frac{n!}{n^n} \left( \frac{4}{\pi} \right)^s \norm{I}
+\sqrt{|\disc{\OK}|},\] as required.
+\end{proof}
+
+\begin{ap}
+The factor $\frac{n!}{n^n} \left( \frac{4}{\pi} \right)^s$ is called
+Minkowski's constant and it decays quickly with respect to $n$. As an example
+of its use, let us show that $\Q[e^{2\pi i/5}]$ is has trivial class group.
+Every ideal class contains a $J$ with $\norm{J} \le \frac{15\sqrt{5}}{2\pi^2} <
+2.$ Thus every ideal class contains \OK{} itself, or in other words, every
+ideal class divides the trivial ideal class.
+\end{ap}
+
+We now begin the the proof of the theorem.
+
+\begin{lem}[Blichtfeldt's Lemma]
+Let $\Lambda$ be an $n$-dimensional lattice in $\R^n$ and let $E$ be a convex,
+measurable, centrally symmetric subset of $\R^n$ such that \[\vol(E) > 2^n
+\vol(\R^n/\Lambda).\] Then $E$ contains a nonzero point of $\Lambda$. If $E$ is
+also compact, then the strict inequality can be weakened to $\ge$.
+
+(Recall that a subset of $\R^n$ is convex if for any $x,y$ in it and $\alpha\in
+[0,1]$, $\alpha x + (1-\alpha)y$ is also in it. Centrally symmetric means $-E
+= E$.)
+\end{lem}
+\begin{proof}
+Let $F$ be a fundamental domain for $\Lambda$. Then $\R^n$ is the disjoint
+union of the translates $x+F, x\in \Lambda$. Thus we have \[\half E =
+\coprod_{x\in \Lambda} \half E \cap (x+F).\] Under the hypothesis of strict
+inequality, we have
+\begin{align*}
+    \vol(F) & < 2^{-n}\vol(E) \\
+    &= \vol\left( \half E \right) \\
+    &= \sum_{x\in \Lambda} \vol\left( {\half E \cap (x+F)} \right)\\
+    &= \sum_{x\in \Lambda} \vol\left( {\left( \half E - x \right)
+    \cap F} \right).
+\end{align*} On the other hand, if the sets $ (\half E - x )\cap F $ were all
+pairwise disjoint then the last equation sum would be at most $\vol(F)$. Thus
+there exist $x,y\in\Lambda$ such that $\half E -x$ and $\half E -y$ intersect.
+Then $x-y \in \Lambda\smallsetminus \{0\}.$
+
+Now, convexity and central symmetry imply that $0\in E$, $\half E \subset E$,
+and $E = \half E + \half E$ (the set of all possible sums). Let $z = e'-x = e''
+-y $ where $e',e'' \in \half E$. Then $x-y = -z + e' - (-z + e'') = e'+e''\in
+E$. This completes the proof under the strict inequality hypothesis.
+
+Next, suppose that $E$ is compact hence closed and bounded and now weaken the
+hypothesis to $\vol(E) \ge 2^n \vol(\R^n/\Lambda).$ For each $m=1,2,\dots$ the
+first part of the theorem ensures that $(1+1/m)E$ contains some nonzero point
+$x_m\in \Lambda$. The $x_m$ are all in $2E$ and since the sequence $\{x_m\}$ is
+discrete, it consists of only finitely many distinct points. Thus one of them,
+say $x_{m_0}$, is in infinitely many of the $(1+1/m)E$ and thus is in
+$\overline{E} = E.$
+\end{proof}
+
+\begin{cor}[of the lemma]
+Suppose there is a compact, convex, centrally symmetric set $A$ of positive
+volume with the property \[a\in A \Rightarrow |\Nm(a)| \le 1.\] Then every
+$n$-dimensional lattice $\Lambda$ contains a nonzero point $x$ with \[|\Nm(x)|
+\le \frac{2^n}{\vol(A)} \vol(\R^n/\Lambda).\]
+\end{cor}
+\begin{proof}
+Apply the lemma with $E = tA$ where \[t^n = \frac{2^n}{\vol(A)}
+\vol(\R^n/\Lambda).\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{Minkowski}]
+Let us get warmed up by proving a weaker result. Let $A$ be the set defined by
+the inequalities \[|x_1| \le 1, \dots, |x_r| \le 1,
+\underbrace{x_{r+1}^2+x_{r+2}^2 \le 1, \dots,x_{n-1}^2+x_{n}^2\le 1.}_{s \text{
+inequalities}}\] Then $\vol(A) = 2^r\pi^s$ and we deduce from the previous
+corollary that every $\Lambda$ contains a nonzero $x$ with \[|N(x)| \le \left(
+\frac{4}{\pi} \right)^s \vol(\R^n/\Lambda).\]
+
+Let us now proceed with the proof of the theorem as stated. Define $A$ by
+\[|x_1| + \cdots + |x_r| + 2\left( \sqrt{x_{r+1}^2+x_{r+2}^2} + \cdots +
+\sqrt{x_{n-1}^2+x_{n}^2} \right) \le n.\] We show that this set is convex.
+Quite generally, let $f(x_1,\dots,x_n)$ be a continuous and nonnegative
+function $\R^n \rightarrow \R_{\ge 0}$ and consider a set $E := \{x : f(x) \le
+\alpha\} = f^{-1}([0,\alpha])$. If the condition \[\tag{$*$} x,y \in E
+\Rightarrow (x+y)/2 \in E\] holds, then $E$ is convex. This follows from the
+continuity of $f$ and the density in \R{} of the dyadic rationals (verify
+this). Thus, to show that $A$ is convex, it suffices to show that $(*)$ holds
+for $A$. This in turn follows from a combination of the triangle inequalities
+for \R{} and $\R^2:$ \begin{align*}
+|r+s| & \le |r| + |s| \\
+\sqrt{(a+b)^2+(c+d)^2} & \le \sqrt{a^2+b^2}+\sqrt{c^2+d^2}.
+\end{align*} (The last equality is just $\norm{x+y} \le \norm{x}+\norm{y}$ if
+$x=(a,b),y=(c,d),\norm{(a,b)} = \sqrt{a^2+b^2}$.)
+
+Recall the AM-GM ineqality for a finite sequence of nonnegative real numbers:
+\[ (a_1 a_2 \cdots a_n)^{1/n} \le \frac{a_1 + a_2 + \cdots + a_n}{n}.\]
+
+Now, the condition $a\in A \Rightarrow |\Nm(a)| \le 1$ follows from applying
+AM-GM to the set of nonnegative real numbers
+\[\left\{
+|x_1|,\cdots, |x_r|,
+\sqrt{x_{r+1}^2+x_{r+2}^2},
+\sqrt{x_{r+1}^2+x_{r+2}^2},
+\cdots
+\sqrt{x_{n-1}^2+x_{n}^2},
+\sqrt{x_{n-1}^2+x_{n}^2} \right\}
+\] (note well the repetition). Namely, the GM is $|N(a)|^{1/n}$ and the AM is
+at most 1.
+
+Let us now show that \[\vol(A) = \frac{n^n}{n!} 2^r \left(
+\frac{\pi}{2}\right)^s.\] Combining the above with the previous lemma and its
+corollary will complete the proof of the theorem. First note that the case
+$s=0, r=n$ of the computation of $\vol(A)$ is direct\footnote{In greater
+detail, one starts with the $n$-dimensional cube defined by $\{x : \max |x_i|
+\le n\}$ which clearly has volume $2^n n^n$. Now, $n!$ is the number of
+permutations $\sigma$ of $\{1,\dots,n\}$. We cover the set $A$ with the $n!$
+disjoint (up to sets of measure zero) and isometric sets \[A_\sigma :=
+\{|x_{\sigma(1)}| \le \cdots \le |x_{\sigma(n)}| \};\] the permutation
+corresponding to $x\in A$ is obtained by simply ordering the coordinates of
+$x$ which shows that the $A_\sigma$ cover $A$.} and therefore we assume $s>0$
+henceforth.
+
+In general, let $V_{r,s}(t)$ be the volume of the subset of $\R^{r+2s}$ defined
+by \[ |x_1| + \cdots + |x_r| + 2\left( \sqrt{x_{r+1}^2+x_{r+2}^2} + \cdots +
+\sqrt{x_{n-1}^2+x_{n}^2} \right) \le t\] so that \[V_{r,s}(t) =
+t^{r+2s}V_{r,s}(1).\] We claim that \[V_{r,s}(1) = \frac{1}{(r+2s)!} 2^r\left(
+\frac{\pi}{2} \right)^s.\] For $r > 0$ we have:
+\begin{align*}
+  V_{r,s}(1) &= 2\int_0^1 V_{r-1,s}(1-x)dx\\
+  &= 2V_{r-1,s}(1)\int_0^1 (1-x)^{r-1+2s}dx \\
+  &= \frac{2}{r+2s}V_{r-1,s}(1).
+\end{align*} Repeated application gives \[V_{r,s}(1) =
+\frac{2^r}{(r+2s)(r+2s-1)\cdots (2s+1)} V_{0,s}(1).\] Now $s> 0$, and we
+define\footnote{Of course, one should check that this is compatible with the
+earlier computation\ldots} $V_{0,1}(1) := \pi/4$. We have \[V_{0,s}(1) =
+\int_{\{x^2+y^2 \le 1/4\}} V_{0,s-1}\left( 1-2\sqrt{x^2+y^2}\right) dx dy.\]
+Changing to polar coordinates we compute\footnote{There is a serious typo at
+this point in \cite{M}.}
+\begin{align*}
+  V_{0,s}(1) &= \int_0^{2\pi} \int_0^{1/2} V_{0,s-1}(1-2\rho)
+  \rho d\rho d\theta \\
+  &= 2\pi \int_0^{1/2} (1-2\rho)^{2(s-1)}\rho V_{0,s-1}(1) d\rho
+\end{align*} where we have used \(V_{r,s}(t) =
+t^{r+2s}V_{r,s}(1).\) Thus, \begin{align*}
+  V_{0,s}(1)/V_{0,s-1}(1) &= \frac{\pi}{2}\int_0^1 u^{2(s-1)}(1-u)du \\
+  &= \frac{\pi}{2}\left( \frac{1}{2s-1} - \frac{1}{2s} \right)\\
+  &= \frac{\pi}{2} \frac{1}{2s(2s-1)}
+\end{align*}
+and we obtain \[V_{0,s}(1) = \left( \frac{\pi}{2} \right)^{s}
+\frac{1}{(2s)!}.\] The demonstrates our claim on the value of $\vol(A)$ and
+completes the proof of the theorem. \end{proof}
+
+\section{Dirichlet's Unit Theorem}
+
+\begin{thm}
+Write $U := \OK^\times$ and $r,2s$ for the number of real, resp.~complex
+embeddings of $K$. Then $U_K$ is a finitely generated abelian group and we have
+a direct product decomposition \[U = U_{\mathrm{tors}}U_{\mathrm{free}}.\] Here
+$U_{\mathrm{tors}}$ coincides with the finite group of roots of unity of $K$
+and $U_{\mathrm{free}}$ is a free abelian group of rank $r+s-1$ with \Z-basis
+$\{u_i\}$ also known as a fundamental system of units.
+\end{thm}
+\begin{proof}
+We have a sequence \[U \subset \OK- \{0\} \rightarrow \Lambda_{\OK}- \{0\}
+\xrightarrow{\log} \R^{r+s} \] where $\log$ is defined in this context as
+follows. For $(x_1,\dots,x_n)\in \Lambda_{\OK} - \{0\}$ \[\log(x_1,\dots,x_n)
+:= (\log|x_1|,\dots,\log|x_r|,\log(x^2_{r+1}+x^2_{r+2}),\dots,
+\log(x_{n-1}^2+x_n^2)).\] This is well defined since all of the arguments to
+the classical logs are positive real numbers. We will also write log for the
+composites $U\rightarrow \R^{r+s}$ and $\OK - \{0\} \rightarrow \R^{r+s}$. The
+target, $\R^{r+s}$ shall be called the logarithmic space.
+
+The following properties are immediate:
+
+(1) $\log(\alpha \beta) = \log \alpha + \log \beta$ for $\alpha,\beta \in \R -
+\{0\},$
+
+(2) $\log U \subset H$ where $H\subset \R^{r+s}$ is the hyperplane defined by
+$y_1+\cdots + y_{r+s} = 0$ --- this is because the norm of a unit is $\pm 1$.
+The hyperplane $H$ is also called the ``trace zero hyperplane,''
+
+(3) any bounded set in the logarithmic space has a finite preimage in $U$ ---
+this is because preimage under log of a bounded set is still a bounded set and
+$\Lambda_{\OK}$ is a lattice in the Euclidean space in question.
+
+The first two properties show that $\log : U \rightarrow H$ is a group
+homomorphism where $U$ is written multiplicatively and $H$ is written
+additively being a real vector space. The third property shows that the kernel
+in $U$ is equal to the set of roots of unity of $K$; namely, an element of the
+kernel has finite order and is thus a root of unity and a root of unity lies on
+the unit circle and is sent to zero by log. Moreover, we use the fact that
+every finite subgroup of the circle is cyclic\footnote{Proof: if $x,y\in S^1$
+are of finite order, then $x' = 2\pi/a, y' = 2\pi/b$ are lifts of $x,y$ in
+\R{}, for some $a,b\in \Z_{> 0}$. Then the group generated by $x$ and $y$ is
+the cyclic group on a generator whose lift is $2\pi/\mathrm{lcm}(a,b).$ This
+is because we may obtain any common multiple of $a$ and $b$ in the
+denominator by adding suitable multiples of $x'$ and $y'$.
+
+Thus the set of roots of unity in a number field is a finite cyclic group.} to
+deduce that the kernel is a cyclic group.
+
+The third property also implies that the image $\log(U)$ is a discrete subgroup
+of the logarithmic space. This is a general fact valid for subgroups of a real
+vector space such that every bounded subset is finite\footnote{Proof: Choose a
+bounded neighborhood of zero in the subgroup in question. It is finite hence
+the topology on it induced from the ambient Euclidean space is discrete.
+Hence 0 is both open and closed in this subgroup and thus it is discrete.
+
+Warning: what is called a ``lattice'' on \cite[p.143]{M} is not the current
+terminology. Lattice means discrete and cocompact subgroup, and what Marcus
+calls ``lattice'' simply means discrete subgroup. Compare with the terminology
+in \cite{MilneANT}.
+
+The discussion on \cite[p.143]{M} says, in modern terminology, that an
+\R-independent set in a Euclidean space gives rise, by taking integer linear
+combinations, to a discrete subgroup, but on the other hand, a \Z-independent
+set need not generate a discrete subgroup.}.
+
+The discrete subgroup $\Lambda_U := \log(U)$ is contained in $H$ and thus is a
+free abelian group of rank $d \le r+s-1.$
+
+To see that $U$ is a direct product $U_{\mathrm{tors}}\cdot U_{\mathrm{free}}$,
+we note that we have already seen that $U$ is generated by $U_{\mathrm{tors}}$
+and representatives of the $d$ basis elements of $\Lambda_U$. Thus $U$ is a
+finitely generated abelian group which therefore splits into the direct sum of
+its torsion subgroup and a free part. Moreover, that free part is generated by
+a splitting of the exact sequence \[0\rightarrow U_{\mathrm{tors}} \rightarrow
+U \rightarrow \Lambda_U \rightarrow 0.\] Thus $U_{\mathrm{free}} := $ the
+image of $\Lambda_U$ under the splitting.
+
+It remains to show that $d=r+s-1$. We will do this by producing $r+s-1$ units
+whose log vectors are \R-linearly independent. We need a lemma first.
+
+\textsl{Lemma A. Fix $k$ with $1 \le k \le r+s$. For each nonzero
+$\alpha\in \OK$ there exists a nonzero $\beta\in \OK$ with
+\[|\Nm_{K/\Q}(\beta)| \le \left( \frac{2}{\pi} \right)^s
+\sqrt{|\disc{\OK}|}\] such that if \begin{align*} \log(\alpha) &=
+(a_1,\cdots,a_{r+s})\\ \log(\beta) &= (b_1,\cdots,b_{r+s})
+\end{align*} then $b_i < a_i$ for all $i \neq k$.}
+
+To see this, we use Blichtfeldt's Lemma (also called Minkowski's Lemma). Let
+$E$ be the subset of $\R^n$ defined by the inequalities
+\begin{gather*}
+  |x_1| \le c_1, \dots , |x_r| \le c_r\\
+  x_{r+1}^2 + x_{r+2}^2 \le c_{r+1} , \dots ,x_{n-1}^2 + x_n^2
+  \le c_{r+s}
+\end{gather*} where the $c_i$ are chosen to satisfy \(0 < c_i < e^{a_i}\) for
+all $i\neq k$ and \[c_1 c_2 \cdots c_{r+s} = \left( \frac{2}{\pi} \right)^s
+\sqrt{|\disc{\OK}|}. \] Then $\vol(E) = 2^r \pi^s c_1 \cdots c_{r+s} = 2^{n}
+\vol(\R^n/\Lambda_{\OK}).$ Blichtfeldt then tells us that $E$ contains a
+nonzero point of $\Lambda_{\OK}$ and one verifies that $\beta$ can be taken to
+be the corresponding element of \OK. ///
+
+Using Lemma A we can show that distinguished units exist.
+
+\textsl{Lemma B. Fix $k$ with $1 \le k \le r+s$. Then there exists $u\in U$
+such that if \[\log(u) = (y_1, \dots, y_{r+s})\] then $y_i < 0$ for all
+$i\neq k$.}
+
+Starting with a nonzero $\alpha_1\in \OK$ we apply Lemma A repeatedly to get a
+sequence $\alpha_1,\alpha_2,\dots$ of nonzero elements of \OK{} with the
+property that for each $i\neq k$ and for each $j\ge 1$ the $i$th coordinate of
+$\log(\alpha_{j+1})$ is strictly less than that of $\log(\alpha_j)$ and
+moreover that the numbers $|\Nm_{K/\Q}(\alpha_j)|$ are bounded. Then the
+\norm{(\alpha_j)} are bounded. This implies (as in the proof of the finiteness
+of class groups) that there are only finitely many distinct ideals
+$(\alpha_j)$. Fixing any $j < h$ such that $(\alpha_j) = (\alpha_h)$, we have
+$\alpha_h = \alpha_j u$ for some $u\in U.$ This is the sought element. ///
+
+Lemma B shows that there are units $u_1,\dots,u_{r+s}$ such that all
+coordinates of $\log(u_i)$ are negative except the $k$th. Since $\log(u_i)\in
+H$ it follows that the $k$th coordinate is positive. We form the $(r+s)\times
+(r+s)$ matrix having $\log(u_i)$ as its $i$th row. We claim that this matrix
+has rank $r+s-1$ and hence that there are $r+s-1$ \R-linearly independent rows.
+This will complete the proof of the unit theorem.
+
+\textsl{Lemma C. Let $A = (a_{ij})$ be an $m\times m$ real matrix such that
+$a_{ii} > 0$ for all $i$ and $a_{ij} < 0$ for all $i\neq j$ and such that,
+moreover, each row-sum is 0 \[\sum_{j=1}^m a_{ij} = 0.\] Then $A$ has rank
+$m-1$.}
+
+Let us see that the first $m-1$ columns are linearly independent. Suppose not
+so that $t_1 v_1 + \cdots + t_{m-1} v_{m-1} = 0$ where the $v_j$ are the column
+vectors and the $t_j$ are real numbers, not all 0. Without loss we may assume
+that some $t_k=1$ and that all other $t_j \le 1$ (divide by the coefficient
+with maximum absolute value). Consider the $k$th row: \[0 = \sum_{j=1}^{m-1}
+t_ja_{kj} \ge \sum_{j=1}^{m-1} a_{kj} > \sum_{j=1}^m a_{kj} = 0,\] a
+contradiction. ///
+
+This completes the proof of Dirichlet's unit theorem.
+\end{proof}
+
+\begin{egs}
+(a) Let $K$ be imaginary quadratic. Then $r+s-1 = 0$ and $U =
+K^{\times}_{\mathrm{tors}} = $ the finite group of roots of 1 in K.
+
+(b) Let $K$ be real quadratic. Then $U = \{\pm u^k\}_{k\in \Z}$ is isomorphic
+to $\Z/2 \oplus \Z.$ In this case, $u$ is called a fundamental unit in \OK.
+\end{egs}
+
+\bibliography{bib}
+\end{document}

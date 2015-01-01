@@ -1,0 +1,76 @@
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{eucal}
+
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[all,tips]{xy}
+\else
+  \usepackage[all,tips,dvips]{xy}
+\fi
+\SelectTips{cm}{10}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\qedsymbol{$\blacksquare$}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{ap}[thm]{} % ap stands for 'a paragraph'
+\newtheorem{caveat}[thm]{Remark}
+\newtheorem{question}[thm]{Question}
+\newtheorem{terminology}[thm]{Terminology}
+\newtheorem{notation}[thm]{Notation}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{summary}[thm]{Summary}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{egs}[thm]{Examples}
+\numberwithin{equation}{thm}
+\renewcommand{\labelitemi}{$\star$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\norm}[1]{\ensuremath{\| #1\|}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\renewcommand{\Re}{\mathrm{Re}\,}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Gal}[1]{\ensuremath{\mathrm{Gal}(#1)}}
+\newcommand{\Pic}[1]{\ensuremath{\mathrm{Pic}(#1)}}
+\newcommand{\vol}{\ensuremath{\mathrm{vol}}}
+\newcommand{\half}{\ensuremath{\textstyle{\frac{1}{2}}}}
+\renewcommand{\Im}[1]{\ensuremath{\mathrm{Im}(#1)}}
+\renewcommand{\Re}[1]{\ensuremath{\mathrm{Re}(#1)}}
+\newcommand{\Cl}[1]{\ensuremath{\mathrm{Cl}(#1)}}
+\newcommand{\reg}[1]{\ensuremath{\mathrm{reg}(#1)}}
+\newcommand{\Spec}[1]{\ensuremath{\mathrm{Spec}\, #1}}
+\newcommand{\Fr}[1]{\ensuremath{\mathrm{Fr}_{#1}}}
+\newcommand{\Nm}{\ensuremath{\mathrm{N}}}
+\newcommand{\tr}{\ensuremath{\mathrm{Tr}}}
+\newcommand{\ndiv}{\ensuremath{\nmid}}
+\newcommand{\disc}[1]{\ensuremath{\mathrm{disc}(#1)}}
+\newcommand{\imod}[1]{\ensuremath{\text{ } (\mathrm{mod}\text{ } #1)}}
+\newcommand{\supp}[1]{\ensuremath{\mathrm{supp}(#1)}}
+\renewcommand{\O}{\ensuremath{\mathscr{O}}}
+\newcommand{\OL}{\ensuremath{\mathscr{O}_L}}
+\newcommand{\OK}{\ensuremath{\mathscr{O}_K}}
+\newcommand{\Fp}{\ensuremath{{\mathbb{F}_p}}}
+\newcommand{\Fq}{\ensuremath{{\mathbb{F}_q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\ord}[2]{\ensuremath{\mathrm{ord}_{#1}(#2)}}
+\newcommand{\End}[1]{\ensuremath{\mathrm{End}(#1)}}
+\newcommand{\Endo}[2]{\ensuremath{\mathrm{End}_{#1}(#2)}}
+\newcommand{\Aut}[1]{\ensuremath{\mathrm{Aut}(#1)}}
+\newcommand{\Auto}[2]{\ensuremath{\mathrm{Aut}_{#1}(#2)}}
