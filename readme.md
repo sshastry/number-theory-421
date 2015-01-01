@@ -1,5 +1,5 @@
 
-# Algebraic Number Theory
+## Algebraic Number Theory
 
 * [01-ramification-and-quadratic-reciprocity.pdf](http://sshastry.github.io/number-theory-421/01-ramification-and-quadratic-reciprocity.pdf)
 * [02-class-group-and-unit-group.pdf](http://sshastry.github.io/number-theory-421/02-class-group-and-unit-group.pdf)
